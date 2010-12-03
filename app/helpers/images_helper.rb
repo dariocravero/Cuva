@@ -27,4 +27,11 @@ Cuva.helpers do
 
         file_name.gsub("public", "")
     end
+
+    def rotate_image(image)
+        @rotated = Magick::ImageList.new(image)
+        @rotated = @rotated.rotate(90)
+        @rotated.write(image)
+        image
+    end
 end
