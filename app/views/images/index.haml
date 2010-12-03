@@ -1,4 +1,9 @@
 %section#images
   %article.image
-    %p
+    #drop_box
       Drop your image here
+    #status
+:javascript
+  $("#images").dndUploader({
+    url : "/upload"
+  })

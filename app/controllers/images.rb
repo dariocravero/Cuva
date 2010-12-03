@@ -5,9 +5,7 @@ Cuva.controllers :images do
         render "images/index"
     end
 
-    post :upload, :map => "/" do
-        @file = request.env['rack.input']
-        @fileName = request.env['HTTP_X_FILE_NAME']
-        puts @fileName
+    post :upload, :map => '/upload' do
+          puts "uploaded #{env['HTTP_X_FILENAME']} - #{request.body.read.size} bytes"
     end
 end
