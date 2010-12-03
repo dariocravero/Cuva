@@ -1,22 +1,13 @@
 Cuva.controllers :images do
-  # get :index, :map => "/foo/bar" do
-  #   session[:foo] = "bar"
-  #   render 'index'
-  # end
+    set :haml, :format => :html5
 
-  # get :sample, :map => "/sample/url", :provides => [:any, :js] do
-  #   case content_type
-  #     when :js then ...
-  #     else ...
-  # end
+    get :index, :map => "/" do
+        render "images/index"
+    end
 
-  # get :foo, :with => :id do
-  #   "Maps to url '/foo/#{params[:id]}'"
-  # end
-
-  # get "/example" do
-  #   "Hello world!"
-  # end
-
-  
+    post :upload, :map => "/" do
+        @file = request.env['rack.input']
+        @fileName = request.env['HTTP_X_FILE_NAME']
+        puts @fileName
+    end
 end
