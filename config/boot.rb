@@ -13,7 +13,6 @@ rescue LoadError
 end
 
 require 'json'
-require '/home/dario/dev/Cuva/lib/rack/raw_upload'
 
 Bundler.require(:default, PADRINO_ENV.to_sym)
 puts "=> Located #{Padrino.bundle} Gemfile for #{Padrino.env}"
