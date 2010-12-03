@@ -7,3 +7,7 @@
   $("#images").dndUploader({
     url : "/upload"
   })
+
+  function updateImage(image) {
+    $("#drop_box").append("<img src='"+image.image+"' />");
+  }
