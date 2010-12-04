@@ -1,13 +1,33 @@
 %section#images
   %article.image
+    .slider_container
+      #slider
     #drop_box
-      Drop your image here
+      .image_box
+        Drop your image here
     #status
 :javascript
-  $("#images").dndUploader({
-    url : "/upload"
-  })
+  $(function() {
+    $("#images").dndUploader({
+      url : "/upload"
+    });
 
-  function updateImage(image) {
-    $("#drop_box").append("<img src='"+image.image+"' />");
-  }
+    $( "#slider" ).slider({
+      min: 100,
+      max: 1000,
+      slide: function( event, ui ) {
+        $('#amount').val( ui.value );
+        var width = ui.value;
+        $.each($('.image_box img'), function(i, el){
+          if($(el).attr('data-max-width') > width) {
+            $(el).attr('width', width);
+            $(el).attr('height', ($(el).attr('data-max-height')/$(el).attr('data-max-width')) * width);
+          }
+        });
+      }
+    }); 
+  });
+
+    function updateImage(image) {
+      $("#drop_box").prepend("<div class='image_box'><img src='"+image.path+"' data-path='"+image.path+"' data-max-width='"+image.width+"' data-max-height='"+image.height+"' /></div>");
+    }
