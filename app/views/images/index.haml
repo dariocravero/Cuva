@@ -1,8 +1,13 @@
-%section#images
-  %article.image
-    #drop_box
-      Drop your image here
-    #status
+#canvas
+
+  .imageholder.selected
+    .controls
+      %button crop both
+      %button rotate both
+      %button publish both
+  .imageholder.instructions
+      %h2 drag and drop your images here to share them on facebook...
+
 :javascript
   $("#images").dndUploader({
     url : "/upload"
@@ -11,3 +16,9 @@
   function updateImage(image) {
     $("#drop_box").append("<img src='"+image.image+"' />");
   }
+
+  $(document).ready(function() {
+    $('#slider').slider();
+  });
+
+

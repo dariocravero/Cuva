@@ -3,11 +3,27 @@
   %head
     %meta{:charset => "UTF-8"}
     %title Cuva
-    =stylesheet_link_tag "style"
-    =javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js", "jquery.dnduploader.js"
+    =stylesheet_link_tag "layout.css", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/themes/smoothness/jquery-ui.css"
+    =javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js", "jquery.dnduploader.js", "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js",  "http://use.typekit.com/jkr2brc.js"
+    :javascript
+      try{Typekit.load();}catch(e){}
+
   %body
     %header
-      
+      #button-box
+        %button select all
+      #littlebox
+      #slider
+      #bigbox
+      #logo
+        #starlight
+          %p powered by starlight
+        #cuva
+          %h1 cuva
+    #about
+
     #main=yield
 
     %footer
+
+

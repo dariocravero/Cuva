@@ -1,0 +1,192 @@
+@charset "UTF-8";
+
+/* CSS Document:
+Written by Patrick Kavanagh
+with Starlight Solutions
+for the Cuva Project
+on 04.12.2010
+*/
+
+
+
+/* DEFAULT STYLING */
+
+
+/* H? and P tags */
+
+h1 { /* This is a Typekit font and requires the inclusion of a font kit to display */
+font: tk-corpulent-web;
+color: #bac2c6;
+font-size: 4.5em;
+margin: 0px;
+padding: 0px;
+}
+
+h2 {
+font-family: tk-ff-speak-web; /* This is a Typekit font and requires the inclusion of a font kit to display */
+color: #bac2c6;
+font-size: 1.5em;
+margin: 0px;
+padding: 0px;
+font-weight: 200;
+}
+
+p {
+font-family: tk-ff-speak-web; /* This is a Typekit font and requires the inclusion of a font kit to display */
+color: #bac2c6;
+font-size: 1em;
+margin: 0px;
+padding: 0px;
+}
+
+
+
+/* LAYOUT */
+
+
+body {
+padding: 0px;
+margin: 0px;
+}
+
+/* 'dark' class adds a grey background color to the page */
+body.dark {
+background-color: #58585a;
+}
+
+/* Header starts here */
+#header {
+width: 100%;
+height: 70px;
+overflow: hidden;
+}
+
+#button-box {
+float: left;
+width: 145px;
+margin: 25px 45px auto 35px;
+}
+
+button {
+width: 100%;
+text-align: center;
+background-color: #f39600;
+border-radius: 22px;
+-moz-border-radius: 22px;
+font-family: tk-ff-speak-web; /* This is a Typekit font and requires the inclusion of a font kit to display */
+color: #4a5c68;
+font-size: 1.5em;
+margin: 0px;
+padding: 0px;
+font-weight: 200;
+border: none;
+outline: none;
+}
+
+button:hover {
+background-color: #feea00;
+}
+
+button:active {
+background-color: #4a5c68;
+}
+
+#littlebox{
+margin-top: 25px;
+float: left;
+width: 40px;
+height: 24px;
+border: 1px solid #bac2c6;
+border-radius: 6px;
+-moz-border-radius: 6px;
+}
+
+#slider {
+float: left;
+width: 350px;
+margin: 32px 20px 23px 20px;
+}
+
+#bigbox{
+margin-top: 22px;
+float: left;
+width: 50px;
+height: 30px;
+border: 1px solid #bac2c6;
+border-radius: 8px;
+-moz-border-radius: 8px;
+}
+
+#logo{
+float: right;
+margin-top: 8px;
+}
+
+#starlight {
+float: left;
+margin: 48px 10px 0px 0px;
+text-align: right;
+}
+
+#cuva {
+float: left;
+margin: 0px 20px 0px 0px;
+}
+
+/* Header ends here */
+
+#about {
+width: 100%;
+background-color: #f2f4f6;
+}
+
+/* Main content of the website starts here */
+
+#canvas {
+border-top: 6px solid #f2f4f6;
+width: 100%;
+margin: 10px auto 0px 0px;
+padding: 10px 0px 0px 10px;
+}
+
+.imageholder {
+float: left;
+margin: 3px;
+width: 330px;
+height: 220px;
+background-color: #f2f4f6;
+border-radius: 30px;
+-moz-border-radius: 30px;
+border: 2px solid #f2f4f6;
+}
+
+.instructions {
+visibility: visible;
+margin: auto;
+width: 200px;
+text-align: center;
+}
+
+.selected.instructions {
+visibility: hidden;
+}
+
+.imageholder.selected {
+border: 2px solid #f39600;
+}
+
+.controls {
+float: right;
+width: 140px;
+margin: 5px 10px 0px 0px;
+}
+
+.controls button {
+font-size: 150%;
+}
+
+.controls button {
+margin: 5px 0px 5px 0px;
+}
+
+/* Main content of the website ends here */
