@@ -13,6 +13,7 @@ rescue LoadError
 end
 
 require 'RMagick'
+require 'mini_fb'
 
 Bundler.require(:default, PADRINO_ENV.to_sym)
 puts "=> Located #{Padrino.bundle} Gemfile for #{Padrino.env}"

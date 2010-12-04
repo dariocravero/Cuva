@@ -1,4 +1,5 @@
 class Cuva < Padrino::Application
+  register AnalyticsInitializer
   register Padrino::Mailer
   register Padrino::Helpers
 

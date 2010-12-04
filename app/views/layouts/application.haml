@@ -3,7 +3,7 @@
   %head
     %meta{:charset => "UTF-8"}
     %title Cuva
-    =stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/themes/smoothness/jquery-ui.css", "jquery.Jcrop.css", "imgareaselect-default.css", "layout.css" 
+    =stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/themes/smoothness/jquery-ui.css", "imgareaselect-default.css", "colorbox.css", "layout.css" 
     =javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js", "http://use.typekit.com/jkr2brc.js"
     :javascript
       try{Typekit.load();}catch(e){}
@@ -14,6 +14,11 @@
       #littlebox
       #slider
       #bigbox
+      #wd
+        #w
+          %h1 w
+        #d
+          %h1 d
       #logo
         #starlight
           %p powered by starlight
@@ -25,4 +30,4 @@
 
     %footer
 
-    =javascript_include_tag "jquery.dnduploader.js", "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js", "jquery.Jcrop.min.js", "jquery.imgareaselect.pack.js", "application.js"
+    =javascript_include_tag "jquery.dnduploader.js", "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js","jquery.colorbox.js", "jquery.imgareaselect.pack.js", "application.js"

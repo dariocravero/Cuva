@@ -6,6 +6,7 @@ gem 'rack-flash'
 gem 'thin' # or mongrel
 
 # Component requirements
+gem 'rack-google-analytics', :require => "rack/google-analytics"
 gem 'haml'
 gem 'activerecord', :require => "active_record"
 gem 'sqlite3-ruby', :require => "sqlite3"
