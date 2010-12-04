@@ -28,6 +28,13 @@ Cuva.helpers do
         file_name.gsub("public", "")
     end
 
+    def measure_image(image)
+        @measured = Magick::ImageList.new("public" + image)
+        @measured = @measured.rotate(90)
+        @measured.write("public" + image)
+        image
+    end
+
     def rotate_image(image)
         @rotated = Magick::ImageList.new("public" + image)
         @rotated = @rotated.rotate(90)
