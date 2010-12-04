@@ -1,62 +1,87 @@
 (function( $ ){
 
- var methods = {
-init : function( options ) {
+var methods = {
+    callbacks : {
+        before_drop: function() {},
+        success: function() {},
+        failure: function() {}
+    },
+    init : function(options, callbacks) {
+        return this.each( function () {
+            var $this = $(this);
 
-return this.each( function () {
+            $.each(options, function( label, setting ) {
+                $this.data(label, setting);
+            });
 
-    var $this = $(this);
+            $.each(callbacks, function(callback, fn) {
+                methods.callbacks[callback] = fn;
+            });
 
-    $.each(options, function( label, setting ) {
-        $this.data(label, setting);
+            $this.bind('dragenter.dndUploader', methods.dragEnter);
+            $this.bind('dragover.dndUploader', methods.dragOver);
+            $this.bind('drop.dndUploader', methods.drop);
         });
+    },
+    dragEnter : function ( event ) {    
+        event.stopPropagation();
+        event.preventDefault();
 
-    $this.bind('dragenter.dndUploader', methods.dragEnter);
-    $this.bind('dragover.dndUploader', methods.dragOver);
-    $this.bind('drop.dndUploader', methods.drop);
+        return false;
+    },
+    dragOver : function ( event ) {      
+       event.stopPropagation();
+       event.preventDefault();
 
-    });
-},
+       return false;
+    },
+    drop : function( event ) {    
+       event.stopPropagation();
+       event.preventDefault();
 
-dragEnter : function ( event ) {    
-                event.stopPropagation();
-                event.preventDefault();
+       var $this = $(this);
+       var dataTransfer = event.originalEvent.dataTransfer;
 
-                return false;
-            },
+       console.log( event.originalEvent.dataTransfer.files );
 
-dragOver : function ( event ) {      
-               event.stopPropagation();
-               event.preventDefault();
+       if (dataTransfer.files.length > 0) {
+           $.each(dataTransfer.files, function ( i, file ) {
+               if (methods.callbacks.before_drop.apply(file)) {
+                   var xhr = new XMLHttpRequest();
+                   xhr.addEventListener('readystatechange', methods.onReadyStateChange, false);
+                   xhr.open($this.data('method') || 'POST', $this.data('url'), true);
+                   xhr.setRequestHeader("Content-Type", "application/octet-stream");
+                   xhr.setRequestHeader("X-File-Name", file.name);
+                   xhr.send(file);
+               }
+           });
+       };
 
-               return false;
-           },
+       return false;
+    },
+    onReadyStateChange: function(event) {
+        var status = null;
 
-drop : function( event ) {    
-           event.stopPropagation();
-           event.preventDefault();
-
-           var $this = $(this);
-           var dataTransfer = event.originalEvent.dataTransfer;
-
-           console.log( event.originalEvent.dataTransfer.files );
-
-           if (dataTransfer.files.length > 0) {
-               $.each(dataTransfer.files, function ( i, file ) {
-                       var xhr = new XMLHttpRequest();
-                       /*xhr.upload.addEventListener('loadstart', onloadstartHandler, false);
-                         xhr.upload.addEventListener('progress', onprogressHandler, false);
-                         xhr.upload.addEventListener('load', onloadHandler, false);*/
-                       xhr.addEventListener('readystatechange', callback, false);
-                       xhr.open('POST', '/upload', true);
-                       xhr.setRequestHeader("Content-Type", "application/octet-stream");
-                       xhr.setRequestHeader("X-File-Name", file.name);
-                       xhr.send(file); // Simple!
-                       });
-           };
-
-           return false;
-       }
+        try {
+            status = event.target.status;
+            switch(status) {
+                case 200:
+                    if (event.target.responseText && event.target.readyState == 4) {
+                        methods.callbacks.success.apply(
+                                JSON.parse(event.target.responseText));
+                    }
+                    break;
+                case 403:
+                    if (event.target.responseText && event.target.readyState == 4) {
+                        methods.callbacks.failure.apply(
+                                JSON.parse(event.target.responseText));
+                    }
+            }
+        }
+        catch(e) {
+            return;
+        }
+    }
 };
 
 $.fn.dndUploader = function( method ) {
@@ -69,18 +94,3 @@ $.fn.dndUploader = function( method ) {
     }
 };
 })( jQuery );
-
-function callback(evt) {
-    var status = null;
-
-    try {
-        status = evt.target.status;
-    }
-    catch(e) {
-        return;
-    }
-
-    if (status == '200' && evt.target.responseText && evt.target.readyState == 4) {
-        updateImage(JSON.parse(evt.target.responseText));
-    }
-}

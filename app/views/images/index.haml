@@ -1,42 +1,14 @@
 #canvas
-
-  .imageholder.selected
+  .image
     .controls
-      %button crop both
-      %button rotate both
-      %button publish both
-  .imageholder.instructions
-      %h2 drag and drop your images here to share them on facebook...
+      %button{:data => {:crop => true}} crop
+      %button{:data => {:rotate => true}} rotate
+      %button{:data => {:publish => true}} publish
+  .image.instructions
+    %h2 drag and drop your images here to share them on facebook...
 
-%section#images
-  %article.image
-    .slider_container
-      #slider
-    #drop_box
-      .image_box
-        Drop your image here
-    #rotate
-      %p
-        Rotate
-    #rotate_all
-      %p
-        Rotate all
 :javascript
-  $(function() {
-    $("#images").dndUploader({
-      url : "/upload"
-    });
-
-  function updateImage(image) {
-    $("#drop_box").append("<img src='"+image.image+"' />");
-  }
-
-  $(document).ready(function() {
-    $('#slider').slider();
-  });
-
-
-    $("#rotate").button().click(function(event) {
+    /*$("#rotate").button().click(function(event) {
       event.preventDefault();
       $.each($('.ui-selected img'), function(i, image){
         $.post("/rotate", { image : $(image).attr("data-path")}, function(image) {
@@ -64,8 +36,4 @@
         });
       }
     }); 
-  });
-
-    function updateImage(image) {
-      $("#drop_box").prepend("<div class='image_box'><img src='"+image.path+"' data-path='"+image.path+"' data-max-width='"+image.width+"' data-max-height='"+image.height+"' /></div>");
-    }
+  });*/

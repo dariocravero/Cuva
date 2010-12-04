@@ -39,11 +39,11 @@ margin: 0px;
 padding: 0px;
 }
 
-
+button {
+    cursor: pointer;
+}
 
 /* LAYOUT */
-
-
 body {
 padding: 0px;
 margin: 0px;
@@ -55,9 +55,9 @@ background-color: #58585a;
 }
 
 /* Header starts here */
-#header {
+header {
 width: 100%;
-height: 70px;
+height: 80px;
 overflow: hidden;
 }
 
@@ -89,6 +89,7 @@ background-color: #feea00;
 
 button:active {
 background-color: #4a5c68;
+color: white;
 }
 
 #littlebox{
@@ -147,9 +148,10 @@ border-top: 6px solid #f2f4f6;
 width: 100%;
 margin: 10px auto 0px 0px;
 padding: 10px 0px 0px 10px;
+height: 600px;
 }
 
-.imageholder {
+.image {
 float: left;
 margin: 3px;
 width: 330px;
@@ -167,11 +169,11 @@ width: 200px;
 text-align: center;
 }
 
-.selected.instructions {
+.ui-selected.instructions {
 visibility: hidden;
 }
 
-.imageholder.selected {
+.image.ui-selected {
 border: 2px solid #f39600;
 }
 
