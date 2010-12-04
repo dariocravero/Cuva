@@ -5,8 +5,6 @@ Cuva.controllers :images do
         # Init the session and destroy wathever is there.
         init_session(true)
 
-        @variable = "something cool " + Time.now.to_s
-
         render "images/index"
     end
 
@@ -15,7 +13,13 @@ Cuva.controllers :images do
     end
 
     post :rotate, :map => "/rotate", :provides => :json do
-        puts params
-        {:image => rotate_image(params[:image])}.to_json
+        {:image => rotate_image(params[:image][:path])}.to_json
+    end
+
+    post :crop, :map => "/crop", :provides => :json do
+        {:image => crop_image(params[:image][:path],
+                              params[:image][:x1], params[:image][:x2],
+                              params[:image][:y1], params[:image][:y2])
+        }.to_json
     end
 end
