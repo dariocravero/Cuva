@@ -11,10 +11,11 @@ Cuva.controllers :images do
     end
 
     post :upload, :map => "/upload", :provides => :json do
-        {:image => save_temporary_image}.to_json
+        {:path => save_temporary_image, :width => :200, :height => :200}.to_json
     end
 
-    post :rotate, :map => "/rotate/:image", :provides => :json do
+    post :rotate, :map => "/rotate", :provides => :json do
+        puts params
         {:image => rotate_image(params[:image])}.to_json
     end
 end

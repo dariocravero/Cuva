@@ -29,9 +29,9 @@ Cuva.helpers do
     end
 
     def rotate_image(image)
-        @rotated = Magick::ImageList.new(image)
+        @rotated = Magick::ImageList.new("public" + image)
         @rotated = @rotated.rotate(90)
-        @rotated.write(image)
+        @rotated.write("public" + image)
         image
     end
 end
