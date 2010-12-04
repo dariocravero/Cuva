@@ -1,11 +1,7 @@
 #canvas
-  .image
-    .controls
-      %button{:data => {:crop => true}} crop
-      %button{:data => {:rotate => true}} rotate
-      %button{:data => {:publish => true}} publish
-  .image.instructions
-    %h2 drag and drop your images here to share them on facebook...
+  .image.placeholder
+    .instructions
+      %h2 drag and drop your images here to share them on facebook...
 
 :javascript
     /*$("#rotate").button().click(function(event) {

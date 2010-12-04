@@ -44,7 +44,7 @@ Cuva.helpers do
 
     def crop_image(image, x1, x2, y1, y2)
         @cropped = Magick::ImageList.new("public" + image)
-        @cropped = @cropped.crop(x1, x2, y1, y2)
+        @cropped = @cropped.crop(x1, y1, x2, y2)
         @cropped.write("public" + image)
         image
     end

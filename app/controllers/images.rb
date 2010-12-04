@@ -13,13 +13,13 @@ Cuva.controllers :images do
     end
 
     post :rotate, :map => "/rotate", :provides => :json do
-        {:path => rotate_image(params[:image][:path])}.to_json
+        puts params
+        {:path => rotate_image(params[:path])}.to_json
     end
 
     post :crop, :map => "/crop", :provides => :json do
-        {:path => crop_image(params[:image][:path],
-                              params[:image][:x1], params[:image][:x2],
-                              params[:image][:y1], params[:image][:y2])
+        {:path => crop_image(params[:path], params[:x1].to_i, 
+                             params[:x2].to_i, params[:y1].to_i, params[:y2].to_i)
         }.to_json
     end
 end

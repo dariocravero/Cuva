@@ -46,7 +46,7 @@ var methods = {
 
        if (dataTransfer.files.length > 0) {
            $.each(dataTransfer.files, function ( i, file ) {
-               if (methods.callbacks.before_drop.apply(file)) {
+               if (methods.callbacks.before_drop.apply(this, [file])) {
                    var xhr = new XMLHttpRequest();
                    xhr.addEventListener('readystatechange', methods.onReadyStateChange, false);
                    xhr.open($this.data('method') || 'POST', $this.data('url'), true);
@@ -67,8 +67,8 @@ var methods = {
             switch(status) {
                 case 200:
                     if (event.target.responseText && event.target.readyState == 4) {
-                        methods.callbacks.success.apply(
-                                JSON.parse(event.target.responseText));
+                        methods.callbacks.success.apply(this,
+                                [JSON.parse(event.target.responseText)]);
                     }
                     break;
                 case 403:
