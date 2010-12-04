@@ -18,6 +18,7 @@ GEM
     eventmachine (0.12.10)
     git (1.2.5)
     haml (3.0.24)
+    hashie (0.4.0)
     http_router (0.4.1)
       rack (>= 1.0.0)
       url_mount (~> 0.2.1)
@@ -28,6 +29,9 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    mini_fb (1.1.6)
+      hashie
+      rest-client
     padrino (0.9.19)
       padrino-admin (= 0.9.19)
       padrino-core (= 0.9.19)
@@ -60,6 +64,9 @@ GEM
     rack-test (0.5.6)
       rack (>= 1.0)
     rake (0.8.7)
+    rest-client (1.6.1)
+      mime-types (>= 1.16)
+    rmagick (2.13.1)
     rspec (2.2.0)
       rspec-core (~> 2.2)
       rspec-expectations (~> 2.2)
@@ -90,10 +97,12 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   haml
+  mini_fb
   padrino (= 0.9.19)
   rack-flash
   rack-test
   rake
+  rmagick
   rspec
   sqlite3-ruby
   thin
