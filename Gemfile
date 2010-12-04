@@ -10,6 +10,7 @@ gem 'haml'
 gem 'activerecord', :require => "active_record"
 gem 'sqlite3-ruby', :require => "sqlite3"
 gem 'rmagick'
+gem 'mini_fb'
 
 # Test requirements
 gem 'rspec', :group => "test"
