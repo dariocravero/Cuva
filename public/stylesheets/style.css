@@ -33,3 +33,6 @@ header {
 #slider {
     width:90%;
 }
+.ui-selected {
+    opacity:0.5;
+}

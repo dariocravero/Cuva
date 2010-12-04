@@ -5,14 +5,33 @@
     #drop_box
       .image_box
         Drop your image here
-    #status
+    #rotate
+      %p
+        Rotate
+    #rotate_all
+      %p
+        Rotate all
 :javascript
   $(function() {
     $("#images").dndUploader({
       url : "/upload"
     });
 
-    $( "#slider" ).slider({
+    $("#rotate").button().click(function(event) {
+      event.preventDefault();
+      $.each($('.ui-selected img'), function(i, image){
+        $.post("/rotate", { image : $(image).attr("data-path")}, function(image) {
+          image = JSON.parse(image);
+          if (image.path) {
+            $("img[data-path='"+ image.path +"']").attr("src", image.path + "?" + Date.now());
+          }
+        });
+      });
+    });
+
+    $("#drop_box").selectable();
+
+    $("#slider").slider({
       min: 100,
       max: 1000,
       slide: function( event, ui ) {
